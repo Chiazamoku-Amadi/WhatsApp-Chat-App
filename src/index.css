@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@layer base {
+  html {
+    font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Lucida Grande",
+      "Arial", "Ubuntu", "Cantarell", "Fira Sans", "sans-serif";
+  }
+}
