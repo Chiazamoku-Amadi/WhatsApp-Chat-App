@@ -242,7 +242,7 @@ const NewUserModal = () => {
                       <div className="flex justify-center items-center gap-2">
                         <FontAwesomeIcon
                           icon={faCloudArrowUp}
-                          style={{ color: "#222E35", cursor: "pointer" }}
+                          style={{ color: "#222E35" }}
                         />
                         <p className="text-button">Drag and Drop to Upload</p>
                       </div>

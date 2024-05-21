@@ -76,10 +76,10 @@ const Users = () => {
                 <img
                   src={user.profilePicture}
                   alt=""
-                  className="rounded-full cursor-pointer object-cover h-11 w-11"
+                  className="rounded-full object-cover h-11 w-11"
                 />
               ) : (
-                <img className="cursor-pointer w-12" src={defaultUser} alt="" />
+                <img className="w-12" src={defaultUser} alt="" />
               )}
             </div>
 

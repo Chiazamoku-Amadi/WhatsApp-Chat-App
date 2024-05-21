@@ -142,7 +142,7 @@ const ChatAreaFooter = () => {
             setShowEmojiPicker((prevShowEmojiPicker) => !prevShowEmojiPicker)
           }
         />
-        <img className="cursor-pointer" src={attach} alt="" />
+        <img src={attach} alt="" />
         <textarea
           ref={inputRef}
           name="message"
@@ -154,7 +154,7 @@ const ChatAreaFooter = () => {
           onKeyPress={handleKeyPress}
           className="bg-[#2A3843] text-base text-read-msg placeholder:text-read-msg outline-none border-none resize-none overflow-hidden focus:text-white rounded-lg py-[10px] px-3 w-[85%]"
         />
-        <img className="cursor-pointer" src={record} alt="" />
+        <img src={record} alt="" />
       </div>
 
       {showEmojiPicker && (

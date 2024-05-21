@@ -48,17 +48,17 @@ const Landing = () => {
         <section className="flex flex-col justify-between items-center bg-wa-gray-light2 p-3 border-r border-[#4D565C] h-full sm:w-[10%] lg:w-[13%] w-[13%]">
           <div className="flex flex-col justify-between items-center gap-6 pr-2 w-full">
             <span className="flex flex-col justify-between items-center gap-6 pb-5 border-b border-[#4D565C] w-full">
-              <img className="cursor-pointer w-6" src={chats} alt="" />
-              <img className="cursor-pointer w-6" src={community} alt="" />
-              <img className="cursor-pointer w-6" src={status} alt="" />
-              <img className="cursor-pointer w-6" src={newsletter} alt="" />
+              <img className="w-6" src={chats} alt="" />
+              <img className="w-6" src={community} alt="" />
+              <img className="w-6" src={status} alt="" />
+              <img className="w-6" src={newsletter} alt="" />
             </span>
-            <img className="cursor-pointer w-6" src={archived} alt="" />
-            <img className="cursor-pointer" src={starred} alt="" />
+            <img className="w-6" src={archived} alt="" />
+            <img src={starred} alt="" />
           </div>
           <div className="flex flex-col justify-center items-center gap-5 w-full">
-            <img className="cursor-pointer w-7" src={settings} alt="" />
-            <img className="cursor-pointer w-8" src={defaultUser} alt="" />
+            <img className="w-7" src={settings} alt="" />
+            <img className="w-8" src={defaultUser} alt="" />
           </div>
         </section>
 
@@ -75,7 +75,7 @@ const Landing = () => {
                   onClick={handleOpenModal}
                 />
               </button>
-              <img className="cursor-pointer" src={menu} alt="" />
+              <img src={menu} alt="" />
             </div>
           </div>
 
@@ -91,7 +91,7 @@ const Landing = () => {
                 className="bg-wa-gray-light2 text-sm text-read-msg placeholder:text-read-msg outline-none focus:text-white"
               />
             </div>
-            <img className="cursor-pointer" src={filter} alt="" />
+            <img src={filter} alt="" />
           </div>
 
           <div className="w-full">
