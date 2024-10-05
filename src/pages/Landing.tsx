@@ -108,18 +108,18 @@ const Landing = () => {
           <main className="flex justify-center items-center flex-col gap-[86px] pt-24 bg-wa-gray-default h-screen w-full">
             <div className="flex justify-center items-center flex-col gap-3">
               <img className="w-80" src={viewLanding} alt="" />
-              <h1 className="text-[#E9EDEFE0] text-[32px] font-light pt-2">
+              <h1 className="text-[#E9EDEFE0] text-2xl md:text-[32px] text-center font-light pt-2">
                 Download WhatsApp for Windows
               </h1>
-              <p className="text-read-msg text-sm text-center w-11/12">
+              <p className="text-read-msg text-xs md:text-sm text-center w-11/12">
                 Make calls, share your screen and get a faster experience when
                 you download the Windows app.
               </p>
-              <button className="bg-button px-6 py-2.5 mt-5 rounded-3xl text-wa-gray-v-dark text-sm font-medium">
+              <button className="bg-button px-6 py-2.5 mt-5 rounded-3xl text-wa-gray-v-dark text-xs md:text-sm font-medium">
                 Get from Microsoft Store
               </button>
             </div>
-            <p className="flex justify-center items-center gap-1 text-[#667781] text-sm">
+            <p className="flex justify-center items-center gap-1 text-[#667781] text-xs md:text-sm">
               <span className="pt-0.5">
                 <img src={lockSmall} alt="" />
               </span>

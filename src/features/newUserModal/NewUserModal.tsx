@@ -156,7 +156,7 @@ const NewUserModal = () => {
             <form
               ref={formRef}
               onSubmit={createNewUser}
-              className="bg-slate-50 flex flex-col justify-start items-start p-10 rounded-2xl fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 h-auto w-1/2"
+              className="bg-slate-50 flex flex-col justify-start items-start p-8 md:p-10 rounded-2xl fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[90%] md:w-3/4 h-auto"
             >
               <FontAwesomeIcon
                 icon={faX}
@@ -164,12 +164,13 @@ const NewUserModal = () => {
                   cursor: "pointer",
                   alignSelf: "end",
                   color: "#00A884",
+                  fontSize: "12px"
                 }}
                 onClick={handleCloseModal}
               />
 
               <header className="flex justify-center items-center w-full">
-                <h2 className="text-button text-2xl font-semibold pb-2">
+                <h2 className="text-button text-base md:text-2xl font-semibold pb-2">
                   New User
                 </h2>
               </header>
@@ -178,7 +179,7 @@ const NewUserModal = () => {
                 <section className="flex flex-col justify-center items-start gap-2 w-full">
                   <label
                     htmlFor="userName"
-                    className="text-button text-base font-semibold"
+                    className="text-button text-sm md:text-base font-semibold"
                   >
                     Name
                   </label>
@@ -195,7 +196,7 @@ const NewUserModal = () => {
                 <section className="flex flex-col justify-center items-start gap-2 w-full">
                   <label
                     htmlFor="about"
-                    className="text-button text-base font-semibold"
+                    className="text-button text-sm md:text-base font-semibold"
                   >
                     About
                   </label>
@@ -214,14 +215,14 @@ const NewUserModal = () => {
                 <section className="flex flex-col justify-center items-start gap-2 w-full">
                   <label
                     htmlFor="profilePicture"
-                    className="text-button text-base font-semibold"
+                    className="text-button text-sm md:text-base font-semibold"
                   >
                     Profile Picture
                   </label>
 
                   {/* Upload via drag & drop */}
                   <div
-                    className={`flex flex-col justify-center items-center gap-2 p-16 border border-dashed border-button ${
+                    className={`flex flex-col justify-center items-center gap-2 px-4 py-8 md:p-16 border border-dashed border-button ${
                       dragging && "bg-blue-100"
                     } w-full`}
                   >
@@ -232,19 +233,19 @@ const NewUserModal = () => {
                             icon={faCheck}
                             style={{ color: "#00A884" }}
                           />
-                          <p className="text-button">
+                          <p className="text-button text-sm md:text-base">
                             File uploaded successfully!
                           </p>
                         </span>
                         <p>{fileName}</p>
                       </div>
                     ) : (
-                      <div className="flex justify-center items-center gap-2">
+                      <div className="flex justify-center items-center gap-3">
                         <FontAwesomeIcon
                           icon={faCloudArrowUp}
                           style={{ color: "#222E35" }}
                         />
-                        <p className="text-button">Drag and Drop to Upload</p>
+                        <p className="text-button text-sm md:text-base">Drag and Drop to Upload</p>
                       </div>
                     )}
                   </div>
@@ -267,7 +268,7 @@ const NewUserModal = () => {
 
                 <section className="flex justify-end items-center w-full">
                   <button
-                    className={`bg-button text-white hover:bg-emerald-600 py-2 px-8 rounded ${
+                    className={`bg-button text-white text-sm md:text-base hover:bg-emerald-600 py-2 px-6 md:px-8 rounded ${
                       error && "cursor-not-allowed"
                     }`}
                   >
