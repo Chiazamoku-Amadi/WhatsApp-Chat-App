@@ -9,7 +9,9 @@ const ChatArea = () => {
   const selectedUser = useSelector(
     (state: RootState) => state.users.selectedUser
   );
-  const searchQuery = useSelector((state: RootState) => state.search.searchQuery)
+  const searchQuery = useSelector(
+    (state: RootState) => state.search.searchQuery
+  );
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -24,9 +26,8 @@ const ChatArea = () => {
     }
   };
 
-  const filteredMessages = allMessages.filter(
-    (message) =>
-      message.content.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredMessages = allMessages.filter((message) =>
+    message.content.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const messages = filteredMessages.map((message) => {

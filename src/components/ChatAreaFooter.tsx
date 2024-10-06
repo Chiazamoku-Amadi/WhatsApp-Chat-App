@@ -33,7 +33,7 @@ const ChatAreaFooter = () => {
   );
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const emojiPickerRef = useRef<HTMLDivElement>(null);
-  const typingTimeoutRef = useRef<number | null>(null);  
+  const typingTimeoutRef = useRef<number | null>(null);
 
   // Effect to focus the textarea
   useEffect(() => {
@@ -131,24 +131,24 @@ const ChatAreaFooter = () => {
     const receiver = users.find((user) => user.id !== currentUser!.id);
 
     event.preventDefault();
-      dispatch(
-        sendMessage({
-          id: uuidv4(),
-          content: inputValue,
-          senderId: currentUser!.id,
-          receiverId: receiver!.id,
-          timestamp: new Date().toISOString(),
-          read: false,
-        })
-      );
+    dispatch(
+      sendMessage({
+        id: uuidv4(),
+        content: inputValue,
+        senderId: currentUser!.id,
+        receiverId: receiver!.id,
+        timestamp: new Date().toISOString(),
+        read: false,
+      })
+    );
 
-      dispatch(setInputValue(""));
-      dispatch(setUserTyping({ userId: currentUser!.id, typing: false }));
+    dispatch(setInputValue(""));
+    dispatch(setUserTyping({ userId: currentUser!.id, typing: false }));
 
-      if (typingTimeoutRef.current) {
-        clearTimeout(typingTimeoutRef.current);
-      }
-  }
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+  };
 
   const handleEmojiSelect = (emoji: Emoji) => {
     const updatedInputValue = inputValue + emoji.native;
@@ -178,7 +178,12 @@ const ChatAreaFooter = () => {
           onKeyPress={handleKeyPress}
           className="bg-[#2A3843] text-base text-read-msg placeholder:text-read-msg outline-none border-none resize-none overflow-hidden focus:text-white rounded-lg py-[10px] px-3 w-[85%]"
         />
-        <img src={send} alt="" className="cursor-pointer" onClick={handleSendMessage} />
+        <img
+          src={send}
+          alt=""
+          className="cursor-pointer"
+          onClick={handleSendMessage}
+        />
       </div>
 
       {showEmojiPicker && (

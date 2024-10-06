@@ -18,23 +18,26 @@ import Chat from "../features/chat/Chat";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/rootReducer";
 import Search from "../components/Search";
-// import { useState } from "react";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 const Landing = () => {
-  // const [searchQuery, setSearchQuery] = useState("");
+  const [showToast, setShowToast] = useState(false);
   const users = useSelector((state: RootState) => state.users.users);
   const dispatch = useAppDispatch();
   const selectedUser = useSelector(
     (state: RootState) => state.users.selectedUser
   );
 
-  // const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSearchQuery(event.target.value);
-  // };
-
   const handleOpenModal = () => {
     if (users.length >= 2) {
-      alert("Maximum user limit reached. Cannot add new user.");
+      setShowToast(true);
+
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+
       return;
     }
 
@@ -64,6 +67,16 @@ const Landing = () => {
 
         {/* Users List */}
         <section className="bg-wa-gray-v-dark py-2 h-full sm:w-[90%] lg:w-[87%] w-[87%] overflow-auto">
+          {showToast && (
+            <div className="fixed top-4 right-4 z-50 bg-wa-gray-v-dark flex justify-center items-center gap-2 text-sm text-white p-4 rounded space-y-1">
+              <FontAwesomeIcon
+                icon={faCircleExclamation}
+                style={{ paddingTop: "2px", fontSize: "14px", color: "red" }}
+              />
+              <p>Maximum user limit reached. Cannot add new user.</p>
+            </div>
+          )}
+
           <div className="flex justify-between items-center px-4 mb-4 w-full">
             <h2 className="text-user text-2xl font-bold w-[80%]">Chats</h2>
             <div className="flex justify-between items-center w-[20%]">
@@ -80,7 +93,7 @@ const Landing = () => {
           </div>
 
           <div className="flex justify-between items-center px-4 mb-4 w-full">
-              <Search placeholder="Search or start new chat" />
+            <Search placeholder="Search or start new chat" />
             <img src={filter} alt="" />
           </div>
 

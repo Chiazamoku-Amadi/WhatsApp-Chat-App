@@ -164,7 +164,7 @@ const NewUserModal = () => {
                   cursor: "pointer",
                   alignSelf: "end",
                   color: "#00A884",
-                  fontSize: "12px"
+                  fontSize: "12px",
                 }}
                 onClick={handleCloseModal}
               />
@@ -245,7 +245,9 @@ const NewUserModal = () => {
                           icon={faCloudArrowUp}
                           style={{ color: "#222E35" }}
                         />
-                        <p className="text-button text-sm md:text-base">Drag and Drop to Upload</p>
+                        <p className="text-button text-sm md:text-base">
+                          Drag and Drop to Upload
+                        </p>
                       </div>
                     )}
                   </div>
