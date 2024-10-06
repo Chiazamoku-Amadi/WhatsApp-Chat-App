@@ -11,26 +11,26 @@ import menu from "../assets/menu.svg";
 import viewLanding from "../assets/native-desktop-hero.png";
 import lockSmall from "../assets/lock-small.svg";
 import filter from "../assets/filter.svg";
-import search from "../assets/search.svg";
-import { useState } from "react";
 import { useAppDispatch } from "../app/store";
 import { openModal } from "../features/newUserModal/newUserModalSlice";
 import Users from "../features/users/Users";
 import Chat from "../features/chat/Chat";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/rootReducer";
+import Search from "../components/Search";
+// import { useState } from "react";
 
 const Landing = () => {
+  // const [searchQuery, setSearchQuery] = useState("");
   const users = useSelector((state: RootState) => state.users.users);
-  const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useAppDispatch();
   const selectedUser = useSelector(
     (state: RootState) => state.users.selectedUser
   );
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
-  };
+  // const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchQuery(event.target.value);
+  // };
 
   const handleOpenModal = () => {
     if (users.length >= 2) {
@@ -80,17 +80,7 @@ const Landing = () => {
           </div>
 
           <div className="flex justify-between items-center px-4 mb-4 w-full">
-            <div className="flex justify-start items-center bg-wa-gray-light2 py-[5px] rounded-lg w-[92%]">
-              <img src={search} alt="" className=" pr-6 pl-3" />
-              <input
-                type="text"
-                placeholder="Search or start new chat"
-                name="searchQuery"
-                value={searchQuery}
-                onChange={handleSearch}
-                className="bg-wa-gray-light2 text-sm text-read-msg placeholder:text-read-msg outline-none focus:text-white"
-              />
-            </div>
+              <Search placeholder="Search or start new chat" />
             <img src={filter} alt="" />
           </div>
 

@@ -1,8 +1,8 @@
 import defaultUser from "../assets/default-user.svg";
-import search from "../assets/search.svg";
 import menu from "../assets/menu.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/rootReducer";
+import Search from "./Search";
 
 const ChatAreaHeader = () => {
   const user = useSelector((state: RootState) => state.users.selectedUser);
@@ -18,8 +18,8 @@ const ChatAreaHeader = () => {
         <p className="text-user font-semibold">{user!.userName}</p>
       </div>
 
-      <div className="flex justify-start items-center gap-4">
-        <img className="w-8" src={search} alt="" />
+      <div className="flex justify-start items-center gap-4 w-3/5 md:w-2/5">
+        <Search placeholder="Search messages" />
         <img className="w-6" src={menu} alt="" />
       </div>
     </div>

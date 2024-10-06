@@ -1,6 +1,6 @@
 import smiley from "../assets/smiley.svg";
 import attach from "../assets/attach-menu-plus.svg";
-import record from "../assets/ptt.svg";
+import send from "../assets/send.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/rootReducer";
 import {
@@ -33,7 +33,7 @@ const ChatAreaFooter = () => {
   );
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const emojiPickerRef = useRef<HTMLDivElement>(null);
-  const typingTimeoutRef = useRef<number | null>(null);
+  const typingTimeoutRef = useRef<number | null>(null);  
 
   // Effect to focus the textarea
   useEffect(() => {
@@ -126,6 +126,30 @@ const ChatAreaFooter = () => {
     }
   };
 
+  // Handles sending a message by clicking send icon
+  const handleSendMessage = (event: React.MouseEvent) => {
+    const receiver = users.find((user) => user.id !== currentUser!.id);
+
+    event.preventDefault();
+      dispatch(
+        sendMessage({
+          id: uuidv4(),
+          content: inputValue,
+          senderId: currentUser!.id,
+          receiverId: receiver!.id,
+          timestamp: new Date().toISOString(),
+          read: false,
+        })
+      );
+
+      dispatch(setInputValue(""));
+      dispatch(setUserTyping({ userId: currentUser!.id, typing: false }));
+
+      if (typingTimeoutRef.current) {
+        clearTimeout(typingTimeoutRef.current);
+      }
+  }
+
   const handleEmojiSelect = (emoji: Emoji) => {
     const updatedInputValue = inputValue + emoji.native;
     dispatch(setInputValue(updatedInputValue));
@@ -154,7 +178,7 @@ const ChatAreaFooter = () => {
           onKeyPress={handleKeyPress}
           className="bg-[#2A3843] text-base text-read-msg placeholder:text-read-msg outline-none border-none resize-none overflow-hidden focus:text-white rounded-lg py-[10px] px-3 w-[85%]"
         />
-        <img src={record} alt="" />
+        <img src={send} alt="" className="cursor-pointer" onClick={handleSendMessage} />
       </div>
 
       {showEmojiPicker && (

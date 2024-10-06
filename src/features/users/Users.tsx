@@ -11,7 +11,7 @@ const Users = () => {
   const currentUser = useSelector((state: RootState) =>
     state.users.users.find((user) => user.id === state.users.selectedUser?.id)
   );
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
 
   const handleUserClick = (user: User) => {
     dispatch(selectedUser(user));
