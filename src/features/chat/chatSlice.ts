@@ -7,7 +7,7 @@ interface ChatState {
 }
 
 const initialState: ChatState = {
-  messages: [],
+  messages: JSON.parse(localStorage.getItem("messages") || "[]"),
   inputValue: "",
 };
 
@@ -17,6 +17,9 @@ const chatSlice = createSlice({
   reducers: {
     sendMessage: (state, action: PayloadAction<Message>) => {
       state.messages.push(action.payload);
+
+      // Save updated messages to localStorage
+      localStorage.setItem("messages", JSON.stringify(state.messages));
     },
 
     setInputValue: (state, action: PayloadAction<string>) => {
@@ -29,6 +32,9 @@ const chatSlice = createSlice({
           message.read = true;
         }
       });
+
+      // Update localStorage with read messages
+      localStorage.setItem("messages", JSON.stringify(state.messages));
     },
   },
 });

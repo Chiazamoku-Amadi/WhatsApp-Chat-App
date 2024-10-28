@@ -12,6 +12,8 @@ import { useEffect, useRef, useState } from "react";
 import Picker from "@emoji-mart/react";
 import { addMessageToUser, setUserTyping } from "../features/users/usersSlice";
 import { v4 as uuidv4 } from "uuid";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 interface Emoji {
   id: string;
@@ -24,6 +26,7 @@ interface Emoji {
 
 const ChatAreaFooter = () => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
   const inputValue = useSelector((state: RootState) => state.chat.inputValue);
   const users = useSelector((state: RootState) => state.users.users);
@@ -106,6 +109,18 @@ const ChatAreaFooter = () => {
 
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
+
+      // Checks if there are more than one user before sending a message
+      if (users.length < 2) {
+        setShowToast(true);
+
+        setTimeout(() => {
+          setShowToast(false);
+        }, 3000);
+
+        return;
+      }
+
       dispatch(
         sendMessage({
           id: uuidv4(),
@@ -128,6 +143,17 @@ const ChatAreaFooter = () => {
 
   // Handles sending a message by clicking send icon
   const handleSendMessage = (event: React.MouseEvent) => {
+    // Checks if there are more than one user before sending a message
+    if (users.length < 2) {
+      setShowToast(true);
+
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+
+      return;
+    }
+
     const receiver = users.find((user) => user.id !== currentUser!.id);
 
     event.preventDefault();
@@ -157,6 +183,16 @@ const ChatAreaFooter = () => {
 
   return (
     <div className="relative w-full">
+      {showToast && (
+        <div className="fixed top-4 right-4 z-50 bg-wa-gray-v-dark flex justify-center items-center gap-2 text-sm text-white p-4 rounded space-y-1">
+          <FontAwesomeIcon
+            icon={faCircleExclamation}
+            style={{ paddingTop: "2px", fontSize: "14px", color: "red" }}
+          />
+          <p>Please create another user to start chatting.</p>
+        </div>
+      )}
+
       <div className="flex justify-between items-center gap-2 p-5 bg-[#212D33] h-16 w-full">
         <img
           className="emoji-icon cursor-pointer"

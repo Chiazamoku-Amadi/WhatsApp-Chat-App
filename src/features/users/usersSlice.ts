@@ -7,7 +7,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  users: [],
+  users: JSON.parse(localStorage.getItem("users") || "[]"),
   selectedUser: null,
 };
 
@@ -17,6 +17,7 @@ const usersSlice = createSlice({
   reducers: {
     addUser: (state, action: PayloadAction<User>) => {
       state?.users.push(action.payload);
+      localStorage.setItem("users", JSON.stringify(state.users));
     },
 
     selectedUser: (state, action: PayloadAction<User>) => {
@@ -64,6 +65,8 @@ const usersSlice = createSlice({
 
       // Update the state with the updated users array
       state.users = updatedUsers;
+
+      localStorage.setItem("users", JSON.stringify(state.users));
     },
 
     allUserMessagesRead: (state, action: PayloadAction<string>) => {
@@ -77,6 +80,8 @@ const usersSlice = createSlice({
 
         state.users[userIndex].unreadMessagesCount = 0;
       }
+
+      localStorage.setItem("users", JSON.stringify(state.users));
     },
 
     setUserTyping: (
@@ -90,6 +95,8 @@ const usersSlice = createSlice({
       if (userIndex !== -1) {
         state.users[userIndex].typing = action.payload.typing;
       }
+
+      localStorage.setItem("users", JSON.stringify(state.users));
     },
   },
 });
